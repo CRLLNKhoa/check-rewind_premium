@@ -4,7 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/layouts/header";
 import ThemeProvider from "@/components/providers/theme-provider";
-import Footer from "@/components/layouts/footer";
+import 'react-tooltip/dist/react-tooltip.css'
 
 const icomoon = Inclusive_Sans({
   subsets: ["latin"],
@@ -36,7 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className="h-screen overflow-y-auto bg-[url('/bg.jpg')] object-fill bg-cover bg-center bg-no-repeat">
+          <div className="h-screen overflow-y-auto bg-[url('/bg-1.png')] object-fill bg-cover bg-center bg-no-repeat">
             {children}
           </div>
           {/* <Footer /> */}

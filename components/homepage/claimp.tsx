@@ -9,6 +9,9 @@ import {
 } from "@/components/ui/carousel-claimp";
 import { Button } from "../ui/button";
 import { IoHelpCircleOutline } from "react-icons/io5";
+import Reward1 from "./reward-1";
+import Reward2 from "./reward-2";
+import Reward3 from "./reward-3";
 
 function Claimp() {
   return (
@@ -27,69 +30,13 @@ function Claimp() {
       >
         <CarouselContent className="flex items-center">
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card className="rounded-2xl relative h-[324px] border-none bg-gradient-to-br from-blue-500/20 to-blue-600 backdrop-blur-xl">
-                <CardContent
-                  className="flex items-center justify-between p-6
-                 flex-col h-full"
-                >
-                  <img className="rounded-lg" src="/anh2.gif" alt="claim" />
-                  <h1 className="text-xl font-bold text-white flex flex-col items-center gap-1 my-4 uppercase">
-                    Gói quà ruby 1 <div className="cursor-pointer"><IoHelpCircleOutline /></div>
-                  </h1>
-                  <Button
-                    className="rounded-full bg-white text-black mt-auto
-                     hover:bg-white font-bold h-12 w-full text-xl"
-                  >
-                    x10{" "}
-                    <img src="/ruby.webp" alt="icon" className="w-6 h-6 ml-2" />{" "}
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+            <Reward1 />
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card className="rounded-2xl border-none h-[324px] bg-gradient-to-r from-gray-700 to-black backdrop-blur-md">
-                <CardContent
-                  className="flex h-full items-center justify-between p-6
-                 flex-col"
-                >
-                  <img className="rounded-lg" src="/anh1.gif" alt="claim" />
-                  <h1 className="text-xl font-bold text-white my-4">
-                    Daily Reward
-                  </h1>
-                  <Button
-                    className="rounded-full bg-white text-black
-                     hover:bg-white font-bold mt-auto h-12  w-full"
-                  >
-                    Claim Reward
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+            <Reward2 />
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card className="rounded-2xl h-[324px] border-none bg-gradient-to-br from-fuchsia-900 to-purple-700 backdrop-blur-md">
-                <CardContent
-                  className="flex items-center justify-between p-6
-                 flex-col h-full"
-                >
-                  <img className="rounded-lg" src="/anh3.gif" alt="claim" />
-                  <h1 className="text-xl font-bold text-white my-4 uppercase">
-                    Gói quà ruby 2
-                  </h1>
-                  <Button
-                    className="rounded-full bg-white text-black
-                     hover:bg-white font-bold h-12 w-full text-xl mt-auto"
-                  >
-                    x100{" "}
-                    <img src="/ruby.webp" alt="icon" className="w-6 h-6 ml-2" />
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+            <Reward3 />
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious />
