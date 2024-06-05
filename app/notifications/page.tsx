@@ -7,8 +7,8 @@ import ListNotificationsLog from "@/components/notifications/list-notifications-
 
 function Notifications() {
   return (
-    <main className="w-full flex justify-center p-4 h-full">
-      <div className="w-full max-w-3xl border border-border rounded-lg p-4 bg-background dark:bg-secondary">
+    <main className="w-full flex justify-center p-4">
+      <div className="w-full max-w-3xl overflow-y-scroll border border-border rounded-lg p-4 bg-background dark:bg-secondary">
         <h1 className="font-bold text-2xl">Thông báo</h1>
         <Tabs defaultValue="cmts" className="w-full mt-8">
           <TabsList className="w-full">

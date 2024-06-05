@@ -11,7 +11,7 @@ import React from "react";
 function StatsPage() {
   return (
     <main className="flex w-full flex-col items-center justify-center">
-      <div className="w-full max-w-[1024px] flex flex-col">
+      <div className="w-full max-w-[1024px] bg-blur-white backdrop-blur-md flex flex-col">
         <Info />
         <DetailInfo />
         <Teams />

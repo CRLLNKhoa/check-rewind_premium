@@ -52,9 +52,9 @@ const data = [
 
 function ChartLog() {
   return (
-    <div className="flex flex-col mt-6 border p-4 border-border rounded-md dark:border-white/20">
+    <div className="flex flex-col bg-blur-black text-white mt-6 border p-4 border-border rounded-md dark:border-white/20">
       <h1 className="font-bold text-lg mb-4">Tỷ lệ thích</h1>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center text-white">
         <ResponsiveContainer width="100%" height={200}>
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
             <PolarGrid />

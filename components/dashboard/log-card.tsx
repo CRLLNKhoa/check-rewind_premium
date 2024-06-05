@@ -6,7 +6,7 @@ import { FaRegEye } from "react-icons/fa";
 
 function LogCard() {
   return (
-    <div className="border border-border dark:border-white/20 rounded-md p-4 flex justify-between items-center">
+    <div className="border border-border bg-blur-white dark:border-white/20 rounded-md p-4 flex justify-between items-center">
       <h2 className="font-bold text-sky-600">Day: 23,425</h2>
       <div className="items-center text-sm hidden lg:flex gap-4">
         <div className="flex items-center gap-1">

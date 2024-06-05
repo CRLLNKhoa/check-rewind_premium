@@ -29,7 +29,7 @@ function ItemLog({ lv_hero }: { lv_hero: number }) {
           />
         </div>
       </div>
-      <div className="flex flex-col">
+      <div className="lg:flex hidden md:flex flex-col">
         <h2 className="font-bold">Lương Khoa</h2>
         <p className="text-sm">1 ngày trước</p>
       </div>
