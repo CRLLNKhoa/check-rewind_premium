@@ -1,25 +1,11 @@
-import DetailInfo from "@/components/stats/detail-info";
-import Info from "@/components/stats/info";
-import Inventory from "@/components/stats/inventory";
-import ListLog from "@/components/stats/list-log";
-import Runes from "@/components/stats/runes";
-import Skills from "@/components/stats/skills";
-import Teams from "@/components/stats/teams";
-import WorldTree from "@/components/stats/world-tree";
+import SearchPlayerInHomePage from "@/components/homepage/search-player";
 import React from "react";
 
 function StatsPage() {
   return (
-    <main className="flex w-full flex-col items-center justify-center">
-      <div className="w-full max-w-[1024px] bg-blur-white backdrop-blur-md flex flex-col">
-        <Info />
-        <DetailInfo />
-        <Teams />
-        <Runes />
-        <Skills />
-        <WorldTree />
-        <Inventory />
-        <ListLog />
+    <main className="flex w-full flex-col py-6 items-center justify-center">
+      <div className="w-full max-w-[1024px] flex flex-col gap-6 p-4">
+        <SearchPlayerInHomePage />
       </div>
     </main>
   );

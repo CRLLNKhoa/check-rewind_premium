@@ -1,4 +1,5 @@
 "use client";
+import { useUser } from "@clerk/nextjs";
 import React from "react";
 import Logo from "./logo";
 import { cn } from "@/lib/utils";
@@ -11,8 +12,8 @@ import SearchPlayer from "./search-player";
 
 function Header() {
   const headerChoice = useSettingStore((state: any) => state.headerFixed);
-  const router = useRouter() 
-
+  const router = useRouter();
+  const { isLoaded, isSignedIn, user } = useUser();
   return (
     <header
       className={cn(
@@ -23,13 +24,24 @@ function Header() {
       <Logo />
       <SearchPlayer />
       <div className="flex items-center gap-4">
-        <Button onClick={() => router.push("/logs/new")} size={"sm"}>
-          Thêm nhật ký
-        </Button>
+        {isSignedIn && (
+          <Button onClick={() => router.push("/logs/new")} size={"sm"}>
+            Thêm nhật ký
+          </Button>
+        )}
         <Button variant={"ghost"} size={"sm"}>
-        <RiNotification3Line onClick={() => router.push("/notifications")} className="w-6 h-6" />
+          <RiNotification3Line
+            onClick={() => router.push("/notifications")}
+            className="w-6 h-6"
+          />
         </Button>
-        <AvatarMenu />
+        {isSignedIn && isLoaded ? (
+          <AvatarMenu data={user} />
+        ) : (
+          <Button onClick={() => router.push("/sign-in")} size={"sm"}>
+            Đăng nhập
+          </Button>
+        )}
       </div>
     </header>
   );

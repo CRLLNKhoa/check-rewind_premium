@@ -10,9 +10,10 @@ function Runes({ runes, setRunes }: { runes: TRunes; setRunes: any }) {
           value={runes.crit}
           onChange={(e) => setRunes({ ...runes, crit: e.target.value })}
           required
+          pattern="^([a-zA-Z0-9]{1,3})-([a-zA-Z0-9]{1,3})$"
           type="text"
           className="outline-none pl-4 border-b"
-          placeholder="Nhập level..."
+          placeholder="level-unleash"
         />
       </div>
 
@@ -22,9 +23,10 @@ function Runes({ runes, setRunes }: { runes: TRunes; setRunes: any }) {
           value={runes.dame}
           onChange={(e) => setRunes({...runes, dame: e.target.value})}
           required
+          pattern="^([a-zA-Z0-9]{1,3})-([a-zA-Z0-9]{1,3})$"
           type="text"
           className="outline-none pl-4 border-b"
-          placeholder="Nhập level..."
+         placeholder="level-unleash"
         />
       </div>
 
@@ -34,9 +36,10 @@ function Runes({ runes, setRunes }: { runes: TRunes; setRunes: any }) {
           value={runes.hero}
           onChange={(e) => setRunes({...runes, hero: e.target.value})}
           required
+          pattern="^([a-zA-Z0-9]{1,3})-([a-zA-Z0-9]{1,3})$"
           type="text"
           className="outline-none pl-4 border-b"
-          placeholder="Nhập level..."
+         placeholder="level-unleash"
         />
       </div>
 

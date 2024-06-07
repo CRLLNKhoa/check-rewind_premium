@@ -10,7 +10,7 @@ function SearchPlayer() {
   return (
     <div
       className="w-[420px] px-4 py-1 rounded-full border border-border dark:border-white/20
-    flex items-center"
+    hidden lg:flex items-center"
     >
       <input value={player} onChange={(e) => setPlayer(e.target.value)} type="text" className="flex-1 bg-transparent outline-none
       text-black border-r mr-2 pl-2" placeholder="Nhập username..." />

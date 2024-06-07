@@ -55,6 +55,7 @@ export function SlotHero({
 }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(slot.name);
+  const [star, setStar] = React.useState(slot.star);
 
   const handleSetSlot = (team: THero[], index: number, hero: string) => {
     const location = team.findIndex((item: THero) => item.index === index);
@@ -132,9 +133,11 @@ export function SlotHero({
           </p>
           <input
             required
-            onChange={(e) =>
-              handleSetStarSlot(team, slot.index, Number(e.target.value))
-            }
+            value={star}
+            onChange={(e) => {
+              handleSetStarSlot(team, slot.index, Number(e.target.value));
+              setStar(Number(e.target.value));
+            }}
             type="number"
             min={0}
             className="w-12 text-center"

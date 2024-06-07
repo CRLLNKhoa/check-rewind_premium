@@ -11,14 +11,15 @@ import { CiBookmark } from "react-icons/ci";
 import { PiUserListLight } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
 import { CiSettings } from "react-icons/ci";
+import { SignOutButton } from "@clerk/nextjs";
 
-function AvatarMenu() {
+function AvatarMenu({data}:{data:any}) {
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={data.imageUrl} />
+          <AvatarFallback>{data.fullName.slice(0,2)}</AvatarFallback>
         </Avatar>
       </PopoverTrigger>
       <PopoverContent>
@@ -35,9 +36,11 @@ function AvatarMenu() {
           <Link href={"/settings"} className="flex items-center gap-2 hover:bg-secondary p-2 px-4">
             <CiSettings className="w-5 h-5" /> Settings
           </Link>
-          <Link href={"/settings"} className="flex items-center gap-2 hover:bg-secondary p-2 px-4">
+          <SignOutButton>
+          <button className="flex items-center gap-2 hover:bg-secondary p-2 px-4">
             <CiLogout className="w-5 h-5" /> Đăng xuất
-          </Link>
+          </button>
+          </SignOutButton>
         </div>
       </PopoverContent>
     </Popover>

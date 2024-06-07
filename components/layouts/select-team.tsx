@@ -13,7 +13,7 @@ function SelectTeam({ team, setTeam }: { team: THero[]; setTeam: any }) {
   return (
     <div className="flex items-center flex-wrap gap-8 mb-4">
       {team.map((item: THero) => (
-        <SlotHero key={item.name} team={team} slot={item} setTeam={setTeam} />
+        <SlotHero key={item.index} team={team} slot={item} setTeam={setTeam} />
       ))}
     </div>
   );
