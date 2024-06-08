@@ -67,21 +67,21 @@ function EditNewLog() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    toast.promise(
-      addLog({
-        user_id: "123",
-        runes,
-        team,
-        skills,
-        world_tree: tree,
-        current_day: Number(days),
-      }),
-      {
-        loading: "Đang lưu nhật ký...",
-        success: <b>Lưu nhật ký thành công !</b>,
-        error: <b>Could not save.</b>,
-      }
-    );
+    // toast.promise(
+    //   addLog({
+    //     user_id: "123",
+    //     runes,
+    //     team,
+    //     skills,
+    //     world_tree: tree,
+    //     current_day: Number(days),
+    //   }),
+    //   {
+    //     loading: "Đang lưu nhật ký...",
+    //     success: <b>Lưu nhật ký thành công !</b>,
+    //     error: <b>Could not save.</b>,
+    //   }
+    // );
   };
 
   const handleResetForm = () => {
