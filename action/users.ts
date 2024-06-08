@@ -55,7 +55,7 @@ export async function getUserStat(name: string) {
     const supabase = await createSupabaseServerClient();
     const { data, error } = await supabase
       .from("user")
-      .select("*")
+      .select(`*, log(*)`)
       .eq("username", name);
     if (error) {
       return { status: 400, data: [error] };

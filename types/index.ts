@@ -3,12 +3,15 @@ import { TRunes, TSkills } from "@/components/profile/profile-game"
 
 export type TLog = {
     user_id: string,
+    username: string
     team: THero[],
     skills: TSkills,
     world_tree?: string,
     current_day: number,
     note?: string,
-    runes: TRunes
+    runes: TRunes,
+    created_at?: any,
+    id?: number
 }
 
 export type TUser = {

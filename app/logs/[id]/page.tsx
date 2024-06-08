@@ -1,4 +1,5 @@
 "use client";
+import { getDetailLog } from "@/action/logs";
 import { getUserStat } from "@/action/users";
 import SearchPlayerInHomePage from "@/components/homepage/search-player";
 import DetailInfo from "@/components/stats/detail-info";
@@ -12,14 +13,14 @@ import WorldTree from "@/components/stats/world-tree";
 import React, { useEffect, useState } from "react";
 import { MdError } from "react-icons/md";
 
-function StatsPage({ params }: { params: { user: string } }) {
+function LogPage({ params }: { params: { id: number } }) {
   const [isloading, setisloading] = useState(true);
   const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
     setisloading(false);
     const get = async () => {
-      const result = await getUserStat(params.user.toLocaleLowerCase());
+      const result = await getDetailLog(params.id);
       if (result?.status === 200) {
         setData(result?.data);
         setisloading(false);
@@ -46,8 +47,8 @@ function StatsPage({ params }: { params: { user: string } }) {
         <div className="w-full max-w-[1024px] flex flex-col gap-6 p-4">
           <SearchPlayerInHomePage />
           <div className="bg-blur-white mt-6 backdrop-blur-md p-4 rounded-lg flex items-center gap-2">
-            <MdError className="w-8 h-8 text-red-500" /> Không tìm thấy người
-            chơi: {params.user}!
+            <MdError className="w-8 h-8 text-red-500" /> Không tìm thấy nhật ký
+            : {params.id}!
           </div>
         </div>
       </main>
@@ -82,4 +83,4 @@ function StatsPage({ params }: { params: { user: string } }) {
   }
 }
 
-export default StatsPage;
+export default LogPage;

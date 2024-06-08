@@ -8,6 +8,7 @@ import WorldTree from "../profile/world-tree";
 import { addLog } from "@/action/logs";
 import toast from "react-hot-toast";
 import { Button } from "../ui/button";
+import { useUser } from "@clerk/nextjs";
 
 export type TSkills = {
   em: string;
@@ -34,8 +35,10 @@ export type TDays = {
 };
 function FormNewLog() {
   const [tree, setTree] = useState("");
+  const { user } = useUser();
 
   const [days, setDays] = useState(0);
+  const [note,setNote] = useState("")
 
   const [team, setTeam] = useState<THero[]>([
     { index: 0, name: "", star: 0, avatar: "" },
@@ -69,12 +72,14 @@ function FormNewLog() {
     e.preventDefault();
     toast.promise(
       addLog({
-        user_id: "123",
+        user_id: String(user?.id),
         runes,
         team,
         skills,
+        note,
         world_tree: tree,
         current_day: Number(days),
+        username: String(user?.username),
       }),
       {
         loading: "Đang lưu nhật ký...",
@@ -92,7 +97,7 @@ function FormNewLog() {
       heal: "",
       cc: "",
       mana: "",
-    })
+    });
     setSkills({
       em: "",
       bd: "",
@@ -101,7 +106,7 @@ function FormNewLog() {
       hl: "",
       ms: "",
       bs: "",
-    })
+    });
     setTeam([
       { index: 0, name: "", star: 0, avatar: "" },
       { index: 1, name: "", star: 0, avatar: "" },
@@ -109,11 +114,11 @@ function FormNewLog() {
       { index: 3, name: "", star: 0, avatar: "" },
       { index: 4, name: "", star: 0, avatar: "" },
       { index: 5, name: "", star: 0, avatar: "" },
-    ])
-    setDays(0)
-    setTree("")
-    toast.success("Tạo mới form thành công !")
-  }
+    ]);
+    setDays(0);
+    setTree("");
+    toast.success("Tạo mới form thành công !");
+  };
 
   return (
     <div className=" p-4 rounded-lg">
@@ -121,7 +126,9 @@ function FormNewLog() {
         <div className="flex items-center gap-4 justify-end flex-wrap">
           <h1 className="text-3xl mr-auto font-bold">Thêm mới</h1>
           <Button type="reset">Nhập nhanh</Button>
-          <Button type="button" onClick={handleResetForm}>Reset form</Button>
+          <Button type="button" onClick={handleResetForm}>
+            Reset form
+          </Button>
         </div>
         <h1 className="text-xl">Day</h1>
         <Days days={days} setDays={setDays} />
