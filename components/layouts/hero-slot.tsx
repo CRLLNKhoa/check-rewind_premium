@@ -80,6 +80,8 @@ export function SlotHero({
     team[location] = { ...team[index], star: star };
     setTeam(team);
   };
+
+  
   return (
     <div className="relative">
       <Popover open={open} onOpenChange={setOpen}>

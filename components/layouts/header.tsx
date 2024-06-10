@@ -1,6 +1,6 @@
 "use client";
 import { useUser } from "@clerk/nextjs";
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "./logo";
 import { cn } from "@/lib/utils";
 import { useSettingStore } from "@/store/setting";
@@ -9,11 +9,26 @@ import { RiNotification3Line } from "react-icons/ri";
 import AvatarMenu from "./avatar-menu";
 import { useRouter } from "next/navigation";
 import SearchPlayer from "./search-player";
+import { useUserStore } from "@/store/user";
+import { getStat } from "@/action/users";
 
 function Header() {
   const headerChoice = useSettingStore((state: any) => state.headerFixed);
   const router = useRouter();
-  const { isLoaded, isSignedIn, user } = useUser();
+  const updateUser = useUserStore((state: any) => state.updateUser);
+  const userStore = useUserStore((state: any) => state.user);
+  const { isLoaded, isSignedIn,user } = useUser();
+
+  useEffect(() => {
+    const get = async () => {
+      const result = await getStat();
+      if(result?.data.length !== 0){
+        updateUser(result?.data[0]);
+      }
+    };
+    get();
+  }, []);
+  
   return (
     <header
       className={cn(
@@ -24,9 +39,13 @@ function Header() {
       <Logo />
       <SearchPlayer />
       <div className="flex items-center gap-4">
-        {isSignedIn && (
+        {isSignedIn && userStore.user_id ? (
           <Button onClick={() => router.push("/logs/new")} size={"sm"}>
             Thêm nhật ký
+          </Button>
+        ) : (
+          <Button onClick={() => router.push("/profile")} size={"sm"}>
+            Cập nhật tài khoản
           </Button>
         )}
         <Button variant={"ghost"} size={"sm"}>

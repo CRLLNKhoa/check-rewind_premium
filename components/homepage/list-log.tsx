@@ -1,7 +1,22 @@
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
 import ItemLog from "./item-log";
+import { TLog } from "@/types";
+import { getLogs } from "@/action/logs";
 
 function ListLog() {
+  const [list,setList] = useState<TLog[]>([])
+
+  useEffect(() => {
+    const get = async () => {
+      const result = await getLogs()
+      if(result?.status === 200){
+        setList(result.data)
+      }
+    }
+    get()
+  }, [])
+  
   return (
     <div className="flex flex-col gap-4">
       <div className="bg-blur-white backdrop-blur-md duration-500 p-4 rounded-lg cursor-pointer flex items-center">
@@ -12,11 +27,10 @@ function ListLog() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <ItemLog lv_hero={12} />
-        <ItemLog lv_hero={4} />
-        <ItemLog lv_hero={8} />
-        <ItemLog lv_hero={19} />
-        <ItemLog lv_hero={16} />
+        {list.map((item:TLog) => (
+          <ItemLog log={item} />
+        ))}
+        
       </div>
     </div>
   );

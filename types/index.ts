@@ -11,7 +11,10 @@ export type TLog = {
     note?: string,
     runes: TRunes,
     created_at?: any,
-    id?: number
+    id?: number,
+    view?: number,
+    like?: number,
+    cmt?: number[]
 }
 
 export type TUser = {

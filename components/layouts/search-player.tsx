@@ -14,7 +14,7 @@ function SearchPlayer() {
     >
       <input value={player} onChange={(e) => setPlayer(e.target.value)} type="text" className="flex-1 bg-transparent outline-none
       text-black border-r mr-2 pl-2" placeholder="Nhập username..." />
-      <button onClick={() => router.push(`/player/${player}`)} disabled={player.length === 0}
+      <button onClick={() => router.push(`/stats/${player}`)} disabled={player.length === 0}
         className="pl-2 h-full group cursor-pointer"
       >
         <FiSearch className="group-hover:text-sky-500 duration-500 font-bold" />

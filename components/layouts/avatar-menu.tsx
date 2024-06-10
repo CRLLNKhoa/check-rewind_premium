@@ -12,6 +12,7 @@ import { PiUserListLight } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
 import { CiSettings } from "react-icons/ci";
 import { SignOutButton } from "@clerk/nextjs";
+import { LuUserCircle } from "react-icons/lu";
 
 function AvatarMenu({data}:{data:any}) {
   return (
@@ -26,6 +27,9 @@ function AvatarMenu({data}:{data:any}) {
         <div className="flex flex-col py-4 text-sm">
         <Link href={"/dashboard"} className="flex items-center gap-2 hover:bg-secondary p-2 px-4">
             <PiFolderSimpleDashedThin className="w-5 h-5" /> Dashboard
+          </Link>
+          <Link href={"/profile"} className="flex items-center gap-2 hover:bg-secondary p-2 px-4">
+            <LuUserCircle className="w-5 h-5" /> Thông tin tài khoản
           </Link>
           <Link href={"/settings"} className="flex items-center gap-2 hover:bg-secondary p-2 px-4">
             <CiBookmark className="w-5 h-5" /> Nhật ký đã lưu

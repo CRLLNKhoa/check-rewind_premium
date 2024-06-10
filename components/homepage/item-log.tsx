@@ -16,7 +16,6 @@ import monent from "moment"
 import Link from "next/link";
 
 function ItemLog({ log }: { log: TLog }) {
-  console.log(log)
   return (
     <div className="bg-blur-white rounded-lg p-4 backdrop-blur-md flex items-center gap-4 select-none">
       <div className="rounded-lg relative">

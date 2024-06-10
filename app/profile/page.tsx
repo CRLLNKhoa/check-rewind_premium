@@ -21,24 +21,28 @@ function ProfilePage() {
   const [isLoading, setIsLoading] = useState(true);
   const updateUser = useUserStore((state: any) => state.updateUser);
   const userStore = useUserStore((state: any) => state.user);
-  const { isLoaded, isSignedIn } = useUser();
+  const { isLoaded, isSignedIn,user } = useUser();
 
   useEffect(() => {
     const get = async () => {
       const result = await getStat();
-      setStats(result?.data[0]);
-      updateUser(result?.data[0]);
+      if(result?.data.length !== 0){
+        setStats(result?.data[0]);
+        updateUser(result?.data[0]);
+      }
       setIsLoading(false)
     };
     get();
   }, []);
 
   const handleCreate = async () => {
-    toast.promise(createStat(), {
+    await toast.promise(createStat(), {
       loading: "Đang tạo...",
       success: <b>Tạo thành công !</b>,
       error: <b>Có lỗi xảy ra.</b>,
     });
+    await updateUser({...userStore, user_id: user?.id})
+    await window.location.reload()
   };
 
   if (!isSignedIn && isLoaded) {
@@ -56,6 +60,9 @@ function ProfilePage() {
       </main>
     );
   }
+
+
+  console.log(userStore)
 
   if (isSignedIn && stats?.length < 1 && !isLoading) {
     return (
