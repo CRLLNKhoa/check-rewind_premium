@@ -45,7 +45,7 @@ function Header() {
           </Button>
         ) : (
           <Button onClick={() => router.push("/profile")} size={"sm"}>
-            Cập nhật tài khoản
+            Update profile
           </Button>
         )}
         <Button variant={"ghost"} size={"sm"}>

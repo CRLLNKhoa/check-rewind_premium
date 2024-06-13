@@ -112,8 +112,8 @@ function LogPage({ params }: { params: { id: number } }) {
             day={data[0]?.user.day}
             exp={data[0]?.user.exp}
           />
-          <h1 className="py-4 px-4 font-bold bg-white flex items-center justify-between">
-            Nhật ký day: {data[0]?.current_day} <Button onClick={() => router.push(`/stats/${data[0].username}`)}>Xem thông tin người chơi</Button>
+          <h1 className="py-4 px-4 font-bold bg-white flex items-center text-xl justify-between">
+            Nhật ký day: {data[0]?.current_day} <Button onClick={() => router.push(`/stats/${data[0].username}`)}>Xem thêm</Button>
           </h1>
           <Teams team={data[0]?.team} />
           <Runes runes={data[0]?.runes} />
@@ -167,7 +167,7 @@ function LogPage({ params }: { params: { id: number } }) {
                   <FaCheckCircle className="text-green-600 ml-2" />
                 </p>
                 <p>Quá hữu ích luôn ! cảm ơn bạn đã đóng góp cho website.</p>
-                <p className="text-end">1 giờ trước</p>
+                <p className="text-end">1205 năm trước</p>
               </div>
             </div>
             {data[0]?.cmt.map((item: any) => (

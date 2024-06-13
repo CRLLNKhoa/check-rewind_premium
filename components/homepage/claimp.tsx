@@ -30,10 +30,10 @@ function Claimp() {
       >
         <CarouselContent className="flex items-center">
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <Reward1 />
+            <Reward2 />
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-            <Reward2 />
+            <Reward1 />
           </CarouselItem>
           <CarouselItem className="md:basis-1/2 lg:basis-1/3">
             <Reward3 />

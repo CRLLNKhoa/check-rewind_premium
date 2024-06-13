@@ -4,6 +4,7 @@ import { Button } from '../ui/button'
 import { IoHelpCircleOutline } from 'react-icons/io5'
 import { Card, CardContent } from '../ui/card'
 import { cn } from '@/lib/utils'
+import toast from 'react-hot-toast'
 
 function Reward2() {
     const [showGift,setShowGift] = useState(false)
@@ -19,6 +20,7 @@ function Reward2() {
                     Quà điểm danh <div className="cursor-pointer" onClick={() => setShowGift(true)}><IoHelpCircleOutline /></div>
                   </h1>
                   <Button
+                  onClick={() => toast.success("Lười qúa nên chưa code !")}
                     className="rounded-full bg-white text-black
                      hover:bg-white font-bold mt-auto h-12  w-full"
                   >

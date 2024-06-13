@@ -8,7 +8,7 @@ export async function createStat() {
     const supabase = await createSupabaseServerClient();
     const { data, error } = await supabase
       .from("user")
-      .insert([{ user_id: user?.id,avatar: user?.imageUrl }])
+      .insert([{ user_id: user?.id,avatar: user?.imageUrl, username: user?.username }])
       .select();
     if (error) {
       return { status: 400, data: [error] };
