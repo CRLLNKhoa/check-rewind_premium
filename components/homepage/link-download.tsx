@@ -11,7 +11,7 @@ function LinkDownload() {
 
   return (
     <div className="grid grid-cols-6 h-24 gap-6 mb-[116px] lg:mb-0">
-      {install && (
+      {install ? (
         <div
           onClick={install}
           className="bg-blur-white h-24 flex flex-col backdrop-blur-md col-span-3 lg:col-span-1
@@ -20,6 +20,14 @@ function LinkDownload() {
           <GrCloudDownload className="text-2xl" />
           <p className="text-sm mt-2 font-semibold">Tải Ứng Dụng</p>
         </div>
+      ) : (
+        <div
+        className="bg-blur-white h-24 flex flex-col backdrop-blur-md col-span-3 lg:col-span-1
+  items-center justify-center rounded-lg cursor-pointer hover:scale-105 duration-500"
+      >
+        <GrCloudDownload className="text-2xl" />
+        <p className="text-sm mt-2 font-semibold">Đang Chuẩn Bị</p>
+      </div>
       )}
       <a
         className="flex items-center col-span-6 lg:col-span-5 bg-blur-white backdrop-blur-md p-6 rounded-lg"
