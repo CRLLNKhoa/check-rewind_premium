@@ -11,6 +11,7 @@ export const metadata = {
   title: "Kiểm Tra Cost Rewind",
   description: "Website Check Cost coded by Carolo Lương Khoa. Đây là một trang web hỗ trợ bạn trong việc chơi game DBG. Các danh mục hàng đầu bao gồm: Single Rewind, Double Rewind, Time Rewind, Push day, Đội hình, World tree, Tính dame, Blogs, và các bài viết khác.",
   referrer: "origin-when-cross-origin",
+  manifest: "/manifest.webmanifest",
   keywords: ["Lương Khoa", "Carolo Lương Khoa", "Day bygone","Check Cost", "Check Rewind","Code by Lương Khoa"],
   authors: [{ name: "Carolo Lương Khoa" }],
   creator: "Carolo Lương Khoa",
@@ -27,7 +28,6 @@ export const metadata = {
     ],
     locale: "vi",
     type: "website",
-    mannifest: "/manifest.json"
   },
 };
 
