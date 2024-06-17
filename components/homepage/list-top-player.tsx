@@ -24,7 +24,7 @@ function ListTopPlayer() {
   }, []);
 
   return (
-    <div className="grid lg:grid-cols-3 gap-4">
+    <div className="grid lg:grid-cols-3 gap-4 mt-4">
       <div className="bg-blur-white backdrop-blur-md cursor-pointer hover:scale-[1.02] duration-500 select-none p-4 rounded-lg relative flex items-center">
         <img src="/admin.jpg" alt="img" className="size-16 rounded-md" />
         <div className="flex flex-col ml-4">

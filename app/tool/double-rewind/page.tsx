@@ -10,23 +10,16 @@ import { PiSortAscendingBold } from "react-icons/pi";
 import { PiSortDescendingBold } from "react-icons/pi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import data from "@/jsons/new-single-rw.json";
+import data from "@/json/doubleCost.json";
 type DataItem = {
   day: number;
-  skipp: number;
-  ticket: number;
+  skip: number;
+  tickets: number;
   cost: number;
-  elixir_cost: number;
+  rwOneDay: number;
 };
 
-type Result = {
-  n_1: DataItem[];
-  n_10: DataItem[];
-  n_100: DataItem[];
-  n_1000: DataItem[];
-};
-
-function SingleRewindPage() {
+function DoubleRewindPage() {
   const [result, setResult] = useState<DataItem[]>([]);
   const [inputCurrent, setInputCurrent] = useState(0);
   const [inputPlaned, setInputPlaned] = useState(0);
@@ -54,71 +47,7 @@ function SingleRewindPage() {
     );
   };
 
-  const handleSearchWithAI = () => {
-    if (inputCurrent < 1000 || inputPlaned < 1000) {
-      toast.error("Day phải trên 1000 !");
-      return;
-    }
 
-    if (inputCurrent >= inputPlaned) {
-      toast.error("Nhập cái gì thế ?");
-      return;
-    }
-
-    if (inputPlaned - inputCurrent < 100) {
-      toast.error("Phải lớn hơn ít nhất 100 day ?");
-      return;
-    }
-
-    const array = data.filter(
-      (entry) => entry.day >= inputCurrent && entry.day <= inputPlaned
-    );
-
-    if (array.length === 0) {
-      toast.error("Trời ơi lỗi rồi ?");
-      return; // Trả về null nếu mảng dữ liệu rỗng
-    }
-
-    // Sắp xếp mảng theo thời gian hoàn thành tăng dần
-    array.sort((a, b) => {
-      let timeA = a.elixir_cost * a.cost;
-      let timeB = b.elixir_cost * b.cost;
-      return timeA - timeB;
-    });
-
-    function calculateAverage(data: DataItem[]): number {
-      if (data.length === 0) {
-        return 0; // Trả về 0 nếu mảng dữ liệu rỗng
-      }
-      return data[0].cost * data[0].elixir_cost;
-    }
-
-    let target_1 = calculateAverage(array);
-    let target_10 = target_1 * 10;
-    let target_100 = target_1 * 100;
-    let target_1000 = target_1 * 1000;
-
-    function sortArrayTarget(array: DataItem[], target: number) {
-      return array.sort((a, b) => {
-        const valueA = target / (a.elixir_cost * a.cost);
-        const valueB = target / (b.elixir_cost * b.cost);
-        return valueB - valueA;
-      });
-    }
-
-    setResultAI({
-      n_1: array.sort((a, b) => a.cost - b.cost).slice(0, 1),
-      n_10: sortArrayTarget(array, target_10).slice(0, 2),
-      n_100: sortArrayTarget(array, target_100).slice(0, 3),
-      n_1000: sortArrayTarget(array, target_1000).slice(0, 5),
-    });
-
-    setIsSearchAI(true);
-    setIsLoadingAI(true);
-    setTimeout(() => {
-      setIsLoadingAI(false);
-    }, 5000);
-  };
 
   const handleSortDay = () => {
     if (isSortDay) {
@@ -144,7 +73,7 @@ function SingleRewindPage() {
     <main className="flex w-full flex-col py-6 items-center justify-center">
       <div className="w-full max-w-[1024px] flex flex-col gap-6 p-4">
         <div className="h-full bg-blur-white backdrop-blur-md p-4 rounded-lg flex flex-col">
-          <h1 className="text-center font-bold text-xl">Single Rewind</h1>
+          <h1 className="text-center font-bold text-xl">Double Rewind</h1>
           <p className="text-center">
             Giá trị của cost càng nhỏ thời gian rewind càng ngắn
           </p>
@@ -195,16 +124,9 @@ function SingleRewindPage() {
           <div className="flex items-center justify-center mt-4 gap-4">
             <Button
               onClick={handleSearch}
-              className="w-1/2 max-w-[200px] flex items-center justify-center"
+              className="w-1/2 max-w-[320px] flex items-center justify-center"
             >
               <IoSearchCircleOutline className="w-6 h-6 mr-2" /> Tra cứu
-            </Button>
-            <Button
-              onClick={handleSearchWithAI}
-              className="w-1/2 max-w-[200px] flex items-center justify-center"
-            >
-              <RiRobot2Line className="w-5 h-5 mr-2" />
-              Search nâng cao
             </Button>
           </div>
           {!isSearchAI && (
@@ -239,28 +161,28 @@ function SingleRewindPage() {
                 <div
                   className={cn(
                     "grid grid-cols-4 backdrop-blur-md p-2 text-white",
-                    item.cost > 161 &&
-                      item.cost < 184 &&
+                    item.cost > 262  &&
+                      item.cost <= 285 &&
                       "bg-[#7CFC00]/70 text-black",
-                    item.cost > 184 &&
-                      item.cost < 207 &&
+                    item.cost > 285  &&
+                      item.cost <= 308 &&
                       "bg-[#00FF00]/70 text-black",
-                    item.cost > 207 && item.cost < 230 && "bg-[#008000]/70",
-                    item.cost > 230 &&
-                      item.cost < 253 &&
+                    item.cost > 308  && item.cost <= 331 && "bg-[#008000]/70",
+                    item.cost > 331  &&
+                      item.cost <= 354 &&
                       "bg-[#FFD700]/70 text-black",
-                    item.cost > 253 && item.cost < 276 && "bg-[#FFA500]/70",
-                    item.cost > 276 && item.cost < 299 && "bg-[#FF8C00]/70",
-                    item.cost > 299 && item.cost < 322 && "bg-[#FF6347]/70",
-                    item.cost > 322 && item.cost < 345 && "bg-[#FF0000]/70",
-                    item.cost > 345 && item.cost < 368 && "bg-[#DC143C]/70",
-                    item.cost > 368 && item.cost < 385 && "bg-[#8B0000]/70"
+                    item.cost > 354  && item.cost <= 377 && "bg-[#FFA500]/70",
+                    item.cost > 377  && item.cost  <= 400 && "bg-[#FF8C00]/70",
+                    item.cost > 400  && item.cost  <= 423 && "bg-[#FF6347]/70",
+                    item.cost > 423  && item.cost  <= 446 && "bg-[#FF0000]/70",
+                    item.cost > 446  && item.cost  <= 469 && "bg-[#DC143C]/70",
+                    item.cost > 469  && item.cost  <= 562 && "bg-[#8B0000]/70"
                   )}
                 >
                   <h1 className="text-center font-bold ">{item.day}</h1>
-                  <h1 className="text-center font-bold">{item.skipp}</h1>
+                  <h1 className="text-center font-bold">{item.skip}</h1>
                   <h1 className="text-center font-bold">
-                    {Math.ceil(item.ticket)}
+                    {Math.ceil(item.tickets)}
                   </h1>
                   <h1 className="text-center font-bold">
                     {Math.ceil(item.cost)}
@@ -359,4 +281,4 @@ function SingleRewindPage() {
   );
 }
 
-export default SingleRewindPage;
+export default DoubleRewindPage;
